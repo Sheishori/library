@@ -25,8 +25,11 @@ let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'No');
 myLibrary.push(theHobbit);
 
 const bookshelf = document.querySelector("#bookshelf");
+const addBook = document.querySelector('.add-book');
+addBook.addEventListener("click", () => addBookToLibrary());
 
 function updateLibrary() {
+	bookshelf.textContent = "";
 	for (let book in myLibrary) {
 		let bookCard = document.createElement('div');
 		bookCard.classList.add('card');

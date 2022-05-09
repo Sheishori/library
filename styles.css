@@ -35,6 +35,12 @@ header {
 	border: 1px solid hsl(222, 32%, 84%);
 }
 
+.add-book {
+	color: white;
+	background-color: hsl(222, 32%, 24%);
+	border: 1px solid hsl(222, 32%, 84%);
+}
+
 footer {
 	margin-top: auto;
 	background-color: hsl(222, 32%, 24%);

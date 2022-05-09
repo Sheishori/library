@@ -29,6 +29,7 @@ const bookshelf = document.querySelector("#bookshelf");
 function updateLibrary() {
 	for (let book in myLibrary) {
 		let bookCard = document.createElement('div');
+		bookCard.classList.add('card');
 		for (let property in myLibrary[book]) {
 			if (myLibrary[book].hasOwnProperty(property)) {
 				let bookProperty = document.createElement('div');

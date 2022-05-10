@@ -7,10 +7,6 @@ function Book(title, author, pages, read) {
 	this.read = read;
 }
 
-Book.prototype.info = function() {
-		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-}
-
 Book.prototype.changeStatus = function() {
 	this.read = (this.read === 'Yes') ? 'No' : 'Yes';
 }

@@ -71,6 +71,11 @@ function updateLibrary() {
 			myLibrary[cardId].changeStatus();
 			updateLibrary();
 		})
+		deleteButton.addEventListener("click", (e) => {
+			let cardId = e.target.parentElement.classList.value.match(/id-[0-9]+/g)[0].split("-")[1];
+			myLibrary.splice(cardId, 1);
+			updateLibrary();
+		})
 		bookCard.append(readButton);
 		bookCard.append(deleteButton);
 		bookshelf.append(bookCard);

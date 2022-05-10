@@ -13,7 +13,7 @@ Book.prototype.info = function() {
 
 const bookForm = document.querySelector('#book-form');
 const formElement = document.querySelector('form');
-formElement.addEventListener("submit", () => {
+formElement.addEventListener("submit", (event) => {
 	let title = document.querySelector('#title').value;
 	let author = document.querySelector('#author').value;
 	let pages = document.querySelector('#pages').value;

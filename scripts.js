@@ -75,7 +75,8 @@ function getBookId(card) {
 
 function changeStatus(card) {
 	myLibrary[getBookId(card)].changeStatus();
-	updateLibrary();
+	let readDiv = document.querySelector(`.id-${getBookId(card)}`).querySelector('.read');
+	readDiv.textContent = `Read: ${myLibrary[getBookId(card)].read}`
 }
 
 function removeBook(card) {

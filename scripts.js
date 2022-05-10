@@ -14,11 +14,10 @@ Book.prototype.info = function() {
 const bookForm = document.querySelector('#book-form');
 const formElement = document.querySelector('form');
 formElement.addEventListener("submit", (event) => {
-	let title = document.querySelector('#title').value;
-	let author = document.querySelector('#author').value;
-	let pages = document.querySelector('#pages').value;
-	let read = document.querySelector('#read').value;
-	let newBook = new Book(title, author, pages, read);
+	let newBook = new Book(document.querySelector('#title').value,
+												document.querySelector('#author').value,
+												document.querySelector('#pages').value,
+												document.querySelector('#read').value);
 	myLibrary.push(newBook);
 	bookForm.style.display = 'none';
 	updateLibrary();

@@ -20,6 +20,7 @@ formElement.addEventListener("submit", (event) => {
 												document.querySelector('#read').value);
 	myLibrary.push(newBook);
 	bookForm.style.display = 'none';
+	formElement.reset();
 	updateLibrary();
 	event.preventDefault();
 });

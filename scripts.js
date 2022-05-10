@@ -17,7 +17,8 @@ formElement.addEventListener("submit", (event) => {
 	let newBook = new Book(document.querySelector('#title').value,
 												document.querySelector('#author').value,
 												document.querySelector('#pages').value,
-												document.querySelector('#read').value);
+												(document.querySelector('#read').checked === true)
+												? 'Yes' : 'No');
 	myLibrary.push(newBook);
 	bookForm.style.display = 'none';
 	formElement.reset();

@@ -36,7 +36,11 @@ header {
 }
 
 .add-book {
-	color: white;
+	font-size: 3rem;
+	border-radius: 3rem;
+	height: 5rem;
+	width: 5rem;
+	color: hsl(222, 32%, 84%);
 	background-color: hsl(222, 32%, 24%);
 	border: 1px solid hsl(222, 32%, 84%);
 }

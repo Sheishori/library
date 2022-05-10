@@ -49,8 +49,12 @@ header {
 	border: 1px solid hsl(222, 32%, 84%);
 }
 
-form {
+#book-form {
 	align-self: center;
+	display: none;
+}
+
+form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;

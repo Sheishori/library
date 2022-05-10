@@ -11,14 +11,22 @@ Book.prototype.info = function() {
 		return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
-function addBookToLibrary() {
-	let title = prompt("Title:");
-	let author = prompt("Author:");
-	let pages = prompt("Pages:");
-	let read = prompt("Read status:");
+const bookForm = document.querySelector('#book-form');
+const formElement = document.querySelector('form');
+formElement.addEventListener("submit", () => {
+	let title = document.querySelector('#title').value;
+	let author = document.querySelector('#author').value;
+	let pages = document.querySelector('#pages').value;
+	let read = document.querySelector('#read').value;
 	let newBook = new Book(title, author, pages, read);
 	myLibrary.push(newBook);
+	bookForm.style.display = 'none';
 	updateLibrary();
+	event.preventDefault();
+});
+
+function addBookToLibrary() {
+	bookForm.style.display = 'inherit';
 }
 
 let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'No');
@@ -51,5 +59,7 @@ function updateLibrary() {
 		bookshelf.append(bookCard);
 	}
 }
+
+
 
 updateLibrary();

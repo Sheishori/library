@@ -62,22 +62,27 @@ function updateLibrary() {
 		let readButton = document.createElement('button');
 		readButton.classList.add("read-status");
 		readButton.textContent = "Read status";
-		readButton.addEventListener("click", (e) => {
-			let cardId = e.target.parentElement.classList.value.match(/id-[0-9]+/g)[0].split("-")[1];
-			myLibrary[cardId].changeStatus();
-			updateLibrary();
-		})
-		deleteButton.addEventListener("click", (e) => {
-			let cardId = e.target.parentElement.classList.value.match(/id-[0-9]+/g)[0].split("-")[1];
-			myLibrary.splice(cardId, 1);
-			updateLibrary();
-		})
+		readButton.addEventListener("click", (e) => changeStatus(e));
+		deleteButton.addEventListener("click", (e) => removeBook(e));
 		bookCard.append(readButton);
 		bookCard.append(deleteButton);
 		bookshelf.append(bookCard);
 	}
 }
 
+function getBookId(card) {
+	return card.target.parentElement.classList.value.match(/id-[0-9]+/g)[0].split("-")[1]
+}
+
+function changeStatus(card) {
+	myLibrary[getBookId(card)].changeStatus();
+	updateLibrary();
+}
+
+function removeBook(card) {
+	myLibrary.splice(getBookId(card), 1);
+	updateLibrary();
+}
 
 
 updateLibrary();

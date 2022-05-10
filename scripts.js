@@ -11,56 +11,63 @@ Book.prototype.changeStatus = function() {
 	this.read = (this.read === 'Yes') ? 'No' : 'Yes';
 }
 
-const bookForm = document.querySelector('#book-form');
-const formElement = document.querySelector('form');
-formElement.addEventListener("submit", (event) => {
-	let newBook = new Book(document.querySelector('#title').value,
-												document.querySelector('#author').value,
-												document.querySelector('#pages').value,
-												(document.querySelector('#read').checked === true)
-												? 'Yes' : 'No');
-	myLibrary.push(newBook);
-	bookForm.style.display = 'none';
-	formElement.reset();
-	updateLibrary();
-	event.preventDefault();
-});
+const bookshelf = document.querySelector("#bookshelf");
+const addBookButton = document.querySelector('#add-book');
+const formContainer = document.querySelector('#form-container');
+const bookForm = document.querySelector('form');
+
+addBookButton.addEventListener("click", () => addBookToLibrary());
 
 function addBookToLibrary() {
-	bookForm.style.display = 'inherit';
+	formContainer.style.display = 'inherit';
 }
 
-const bookshelf = document.querySelector("#bookshelf");
-const addBook = document.querySelector('.add-book');
-addBook.addEventListener("click", () => addBookToLibrary());
+bookForm.addEventListener("submit", (event) => {
+	event.preventDefault();
+	myLibrary.push(new Book(document.querySelector('#title').value,
+								document.querySelector('#author').value,
+								document.querySelector('#pages').value,
+								(document.querySelector('#read').checked === true) ? 'Yes' : 'No'));
+	updateLibrary();
+	formContainer.style.display = 'none';
+	bookForm.reset();
+});
 
+// reset the bookshelf and regenerate the contents
 function updateLibrary() {
 	bookshelf.textContent = "";
 	for (let book in myLibrary) {
-		let bookCard = document.createElement('div');
-		bookCard.classList.add('card');
-		bookCard.classList.add(`id-${book}`);
-		for (let property in myLibrary[book]) {
-			if (myLibrary[book].hasOwnProperty(property)) {
-				let bookProperty = document.createElement('div');
-				bookProperty.textContent = `${property.charAt(0).toUpperCase() + property.slice(1)}: ${myLibrary[book][property]}`;
-				bookCard.append(bookProperty);
-			}
-		}
-		let deleteButton = document.createElement('button');
-		deleteButton.classList.add("remove");
-		deleteButton.textContent = "Remove";
-		let readButton = document.createElement('button');
-		readButton.classList.add("read-status");
-		readButton.textContent = "Read status";
-		readButton.addEventListener("click", (e) => changeStatus(e));
-		deleteButton.addEventListener("click", (e) => removeBook(e));
-		bookCard.append(readButton);
-		bookCard.append(deleteButton);
-		bookshelf.append(bookCard);
+		bookshelf.append(generateBookCard(book));
 	}
 }
 
+function generateBookCard(book) {
+	let bookCard = document.createElement('div');
+	bookCard.classList.add('card');
+	bookCard.classList.add(`id-${book}`);
+	// create the properties on the card from the object contents
+	for (let property in myLibrary[book]) {
+		if (myLibrary[book].hasOwnProperty(property)) {
+			let bookProperty = document.createElement('div');
+			bookProperty.textContent =
+			`${property.charAt(0).toUpperCase() + property.slice(1)}: ${myLibrary[book][property]}`;
+			bookCard.append(bookProperty);
+		}
+	}
+	let readButton = document.createElement('button');
+	readButton.classList.add("read-status");
+	readButton.textContent = "Read status";
+	readButton.addEventListener("click", (e) => changeStatus(e));
+	bookCard.append(readButton);
+	let deleteButton = document.createElement('button');
+	deleteButton.classList.add("remove");
+	deleteButton.textContent = "Remove";
+	deleteButton.addEventListener("click", (e) => removeBook(e));
+	bookCard.append(deleteButton);
+	return bookCard;
+}
+
+// get book object id from the button's parent's class
 function getBookId(card) {
 	return card.target.parentElement.classList.value.match(/id-[0-9]+/g)[0].split("-")[1]
 }

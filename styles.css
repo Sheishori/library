@@ -39,7 +39,7 @@ header {
 	border: 1px solid hsl(222, 32%, 84%);
 }
 
-.add-book {
+#add-book {
 	font-size: 3rem;
 	border-radius: 3rem;
 	height: 5rem;
@@ -49,7 +49,7 @@ header {
 	border: 1px solid hsl(222, 32%, 84%);
 }
 
-#book-form {
+#form-container {
 	align-self: center;
 	display: none;
 }

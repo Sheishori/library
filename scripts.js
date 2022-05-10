@@ -30,15 +30,6 @@ function addBookToLibrary() {
 	bookForm.style.display = 'inherit';
 }
 
-let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'No');
-let lotr1 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', '479', 'No');
-let lotr2 = new Book('The Two Towers', 'J.R.R. Tolkien', '415', 'No');
-let lotr3 = new Book('The Return of the King', 'J.R.R. Tolkien', '347', 'No');
-myLibrary.push(theHobbit);
-myLibrary.push(lotr1);
-myLibrary.push(lotr2);
-myLibrary.push(lotr3);
-
 const bookshelf = document.querySelector("#bookshelf");
 const addBook = document.querySelector('.add-book');
 addBook.addEventListener("click", () => addBookToLibrary());
@@ -84,5 +75,12 @@ function removeBook(card) {
 	updateLibrary();
 }
 
-
+let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'No');
+let lotr1 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', '479', 'No');
+let lotr2 = new Book('The Two Towers', 'J.R.R. Tolkien', '415', 'No');
+let lotr3 = new Book('The Return of the King', 'J.R.R. Tolkien', '347', 'No');
+myLibrary.push(theHobbit);
+myLibrary.push(lotr1);
+myLibrary.push(lotr2);
+myLibrary.push(lotr3);
 updateLibrary();

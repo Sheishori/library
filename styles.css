@@ -69,6 +69,7 @@ header {
 }
 
 #add-book {
+	margin: 1rem;
 	font-size: 3rem;
 	border-radius: 3rem;
 	height: 5rem;

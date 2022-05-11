@@ -60,6 +60,11 @@ function generateBookCard(book) {
 	let bookCard = document.createElement('div');
 	bookCard.classList.add('card');
 	bookCard.classList.add(`id-${book}`);
+	let bookCover = document.createElement('img');
+	bookCover.classList.add('cover');
+	bookCover.src = myLibrary[book].cover;
+	bookCover.alt = `${myLibrary[book].title}'s cover`;
+	bookCard.append(bookCover);
 	let bookInfo = document.createElement('div');
 	bookInfo.classList.add('book-info');
 	bookCard.append(bookInfo);
@@ -67,13 +72,7 @@ function generateBookCard(book) {
 	for (let property in myLibrary[book]) {
 		if (myLibrary[book].hasOwnProperty(property)) {
 			if (myLibrary[book][property] !== "") {
-				if (property === "cover") {
-					let bookCover = document.createElement('img');
-					bookCover.classList.add(property);
-					bookCover.src = myLibrary[book][property];
-					bookCover.alt = `${myLibrary[book].title}'s cover`;
-					bookInfo.append(bookCover);
-				} else {
+				if (property !== "cover") {
 					let bookProperty = document.createElement('div');
 					bookProperty.classList.add(property);
 					let propertyName = document.createElement('span');

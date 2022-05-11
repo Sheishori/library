@@ -25,7 +25,6 @@ header {
 #bookshelf {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 250px);
-	grid-auto-rows: 10rem;
 	justify-content: center;
 	gap: 1rem;
 	padding: 1rem;
@@ -37,6 +36,12 @@ header {
 	justify-content: center;
 	background-color: hsl(222, 32%, 34%);
 	border: 1px solid hsl(222, 32%, 84%);
+}
+
+img {
+	margin: 0.5rem;
+	height: 12rem;
+	width: auto;
 }
 
 #add-book {

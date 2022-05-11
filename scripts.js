@@ -1,6 +1,7 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(cover, title, author, pages, read) {
+	this.cover = cover;
 	this.title = title;
 	this.author = author;
 	this.pages = pages;
@@ -32,7 +33,8 @@ function checkIfExists() {
 
 bookForm.addEventListener("submit", (event) => {
 	event.preventDefault();
-	myLibrary.push(new Book(document.querySelector('#title').value,
+	myLibrary.push(new Book(document.querySelector('#cover').value,
+								document.querySelector('#title').value,
 								document.querySelector('#author').value,
 								document.querySelector('#pages').value,
 								(document.querySelector('#read').checked === true) ? 'Yes' : 'No'));
@@ -61,11 +63,20 @@ function generateBookCard(book) {
 	// create the properties on the card from the object contents
 	for (let property in myLibrary[book]) {
 		if (myLibrary[book].hasOwnProperty(property)) {
-			let bookProperty = document.createElement('div');
-			bookProperty.classList.add(property);
-			bookProperty.textContent =
-			`${property.charAt(0).toUpperCase() + property.slice(1)}: ${myLibrary[book][property]}`;
-			bookCard.append(bookProperty);
+			if (myLibrary[book][property] !== "") {
+				let bookProperty = document.createElement('div');
+				bookProperty.classList.add(property);
+				if (property === "cover") {
+					let bookCover = document.createElement('img');
+					bookCover.src = myLibrary[book][property];
+					bookCover.alt = `${myLibrary[book].title}'s cover`;
+					bookProperty.append(bookCover);
+				} else {
+					bookProperty.textContent =
+					`${property.charAt(0).toUpperCase() + property.slice(1)}: ${myLibrary[book][property]}`;
+				}
+				bookCard.append(bookProperty);
+			}
 		}
 	}
 	let readButton = document.createElement('button');
@@ -97,10 +108,10 @@ function removeBook(card) {
 	updateLibrary();
 }
 
-let theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', 'No');
-let lotr1 = new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', '479', 'No');
-let lotr2 = new Book('The Two Towers', 'J.R.R. Tolkien', '415', 'No');
-let lotr3 = new Book('The Return of the King', 'J.R.R. Tolkien', '347', 'No');
+let theHobbit = new Book('https://images-na.ssl-images-amazon.com/images/I/710+HcoP38L.jpg', 'The Hobbit', 'J.R.R. Tolkien', '295', 'No');
+let lotr1 = new Book('https://images-na.ssl-images-amazon.com/images/I/41gHG-a2OEL._SX331_BO1,204,203,200_.jpg', 'The Fellowship of the Ring', 'J.R.R. Tolkien', '479', 'No');
+let lotr2 = new Book('https://m.media-amazon.com/images/I/4123zOAwAgL.jpg', 'The Two Towers', 'J.R.R. Tolkien', '415', 'No');
+let lotr3 = new Book('https://m.media-amazon.com/images/I/41KGl2FqeAL.jpg', 'The Return of the King', 'J.R.R. Tolkien', '347', 'No');
 myLibrary.push(theHobbit);
 myLibrary.push(lotr1);
 myLibrary.push(lotr2);

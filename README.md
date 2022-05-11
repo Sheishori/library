@@ -1,4 +1,1 @@
 # library
-
-TODO:
-- CSS styling

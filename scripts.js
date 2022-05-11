@@ -60,22 +60,30 @@ function generateBookCard(book) {
 	let bookCard = document.createElement('div');
 	bookCard.classList.add('card');
 	bookCard.classList.add(`id-${book}`);
+	let bookInfo = document.createElement('div');
+	bookInfo.classList.add('book-info');
+	bookCard.append(bookInfo);
 	// create the properties on the card from the object contents
 	for (let property in myLibrary[book]) {
 		if (myLibrary[book].hasOwnProperty(property)) {
 			if (myLibrary[book][property] !== "") {
-				let bookProperty = document.createElement('div');
-				bookProperty.classList.add(property);
 				if (property === "cover") {
 					let bookCover = document.createElement('img');
+					bookCover.classList.add(property);
 					bookCover.src = myLibrary[book][property];
 					bookCover.alt = `${myLibrary[book].title}'s cover`;
-					bookProperty.append(bookCover);
+					bookInfo.append(bookCover);
 				} else {
-					bookProperty.textContent =
-					`${property.charAt(0).toUpperCase() + property.slice(1)}: ${myLibrary[book][property]}`;
+					let bookProperty = document.createElement('div');
+					bookProperty.classList.add(property);
+					let propertyName = document.createElement('span');
+					propertyName.classList.add('property-name');
+					let propertyValue = document.createElement('span');
+					propertyName.textContent = `${property.charAt(0).toUpperCase() + property.slice(1)}: `;
+					propertyValue.textContent = myLibrary[book][property];
+					bookProperty.append(propertyName, propertyValue);
+					bookInfo.append(bookProperty);
 				}
-				bookCard.append(bookProperty);
 			}
 		}
 	}

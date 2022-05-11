@@ -25,6 +25,7 @@ header {
 #bookshelf {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, 250px);
+	grid-template-rows: 20rem;
 	justify-content: center;
 	gap: 1rem;
 	padding: 1rem;
@@ -38,10 +39,23 @@ header {
 	border: 1px solid hsl(222, 32%, 84%);
 }
 
+.book-info {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.book-info div:not(.cover) {
+	display: grid;
+	grid-template-columns: 5rem 1fr;
+}
+
+.property-name {
+	color: hsl(222, 32%, 84%);
+}
+
 img {
-	margin: 0.5rem;
-	height: 12rem;
-	width: auto;
+	max-width: 50%;
+	max-height: auto;
 }
 
 #add-book {

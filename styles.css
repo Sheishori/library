@@ -54,6 +54,7 @@ header {
 }
 
 img {
+	align-self: center;
 	max-width: 50%;
 	max-height: auto;
 }

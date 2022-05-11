@@ -73,6 +73,19 @@ form {
 	box-shadow: 0rem 0rem 3rem hsl(0, 0%, 0%, 0.5);
 }
 
+input:focus {
+	outline: 0.15rem solid rgb(110, 169, 209);
+}
+
+#title:invalid:not(:focus):not(:placeholder-shown) {
+	outline: 0.1rem solid red;
+}
+
+#title:invalid:not(:placeholder-shown) + div::after {
+	content: "Book already exists!";
+	color: red;
+}
+
 #cancel {
 	position: absolute;
 	top: 1rem;

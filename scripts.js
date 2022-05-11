@@ -15,12 +15,19 @@ const bookshelf = document.querySelector("#bookshelf");
 const addBookButton = document.querySelector('#add-book');
 const formContainer = document.querySelector('#form-container');
 const bookForm = document.querySelector('form');
+const titleField = document.querySelector('#title');
 const cancelButton = document.querySelector('#cancel');
 
 addBookButton.addEventListener("click", () => addBookToLibrary());
 
 function addBookToLibrary() {
 	formContainer.style.display = 'inherit';
+}
+
+function checkIfExists() {
+	if (myLibrary.find(book => book.title == document.querySelector('#title').value)) {
+		titleField.setCustomValidity("Book already exists!");
+	} else titleField.setCustomValidity("");
 }
 
 bookForm.addEventListener("submit", (event) => {

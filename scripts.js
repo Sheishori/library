@@ -15,6 +15,7 @@ const bookshelf = document.querySelector("#bookshelf");
 const addBookButton = document.querySelector('#add-book');
 const formContainer = document.querySelector('#form-container');
 const bookForm = document.querySelector('form');
+const cancelButton = document.querySelector('#cancel');
 
 addBookButton.addEventListener("click", () => addBookToLibrary());
 
@@ -29,6 +30,11 @@ bookForm.addEventListener("submit", (event) => {
 								document.querySelector('#pages').value,
 								(document.querySelector('#read').checked === true) ? 'Yes' : 'No'));
 	updateLibrary();
+	formContainer.style.display = 'none';
+	bookForm.reset();
+});
+
+cancelButton.addEventListener("click", () => {
 	formContainer.style.display = 'none';
 	bookForm.reset();
 });

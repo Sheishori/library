@@ -85,6 +85,7 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-align: right;
 	background-color: hsl(0, 0%, 0%, 0.3);
 	display: none;
 }
@@ -95,11 +96,31 @@ form {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
-	height: 15rem;
-	width: 20rem;
+	gap: 2rem;
+	height: 26rem;
+	width: 25rem;
+	font-size: 1.2rem;
 	background-color: hsl(203, 35%, 50%);
 	box-shadow: 0rem 0rem 3rem hsl(0, 0%, 0%, 0.5);
+}
+
+form p {
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+ul {
+	display: grid;
+	grid-template-columns: 7rem 1fr;
+	gap: 1rem;
+}
+
+li {
+	display: contents;
+}
+
+input {
+	padding: 0.2rem;
 }
 
 input:focus {
@@ -110,9 +131,17 @@ input:focus {
 	outline: 0.1rem solid red;
 }
 
-#title:invalid:not(:placeholder-shown) + div::after {
-	content: "Book already exists!";
-	color: red;
+#submit-book {
+	height: 2.5rem;
+	width: 8rem;
+	border-radius: 2rem;
+	font-weight: 600;
+	color: white;
+	background-color: hsl(203, 35%, 35%);
+}
+
+#submit-book:hover {
+	background-color: hsl(203, 35%, 30%);
 }
 
 #cancel {
@@ -131,7 +160,6 @@ input:focus {
 	color: hsl(222, 32%, 84%);
 	background-color: hsl(203, 35%, 60%);
 }
-
 footer {
 	margin-top: auto;
 	background-color: hsl(203, 35%, 50%);

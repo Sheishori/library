@@ -60,10 +60,9 @@ function generateBookCard(book) {
 	let bookCard = document.createElement('div');
 	bookCard.classList.add('card');
 	bookCard.classList.add(`id-${book}`);
-	let bookCover = document.createElement('img');
+	let bookCover = document.createElement('div');
 	bookCover.classList.add('cover');
-	bookCover.src = myLibrary[book].cover;
-	bookCover.alt = `${myLibrary[book].title}'s cover`;
+	bookCover.style.backgroundImage = `url(${myLibrary[book].cover})`;
 	bookCard.append(bookCover);
 	let bookInfo = document.createElement('div');
 	bookInfo.classList.add('book-info');

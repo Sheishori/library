@@ -1,15 +1,17 @@
 let myLibrary = [];
 
-function Book(cover, title, author, pages, read) {
-	this.cover = cover;
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-}
+class Book {
+	constructor(cover, title, author, pages, read) {
+		this.cover = cover;
+		this.title = title;
+		this.author = author;
+		this.pages = pages;
+		this.read = read;
+	}
 
-Book.prototype.changeStatus = function() {
-	this.read = (this.read === 'Yes') ? 'No' : 'Yes';
+	changeStatus() {
+		this.read = (this.read === 'Yes') ? 'No' : 'Yes';
+	}
 }
 
 const bookshelf = document.querySelector("#bookshelf");

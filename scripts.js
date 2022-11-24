@@ -20,6 +20,7 @@ const formContainer = document.querySelector('#form-container');
 const bookForm = document.querySelector('form');
 const titleField = document.querySelector('#title');
 const cancelButton = document.querySelector('#cancel');
+const authorInput = document.querySelector('#author');
 
 addBookButton.addEventListener("click", () => addBookToLibrary());
 
@@ -32,6 +33,19 @@ function checkIfExists() {
 		titleField.setCustomValidity("Book already exists!");
 	} else titleField.setCustomValidity("");
 }
+
+authorInput.addEventListener("input", (event) => {
+	authorInput.setCustomValidity("");
+	authorInput.checkValidity();
+});
+
+authorInput.addEventListener("invalid", () => {
+	if (authorInput.value === "") {
+		authorInput.setCustomValidity("Author field cannot be empty");
+	} else {
+	authorInput.setCustomValidity("Author names can only contain letters");
+	}
+});
 
 bookForm.addEventListener("submit", (event) => {
 	event.preventDefault();
